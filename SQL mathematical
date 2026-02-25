@@ -1,0 +1,62 @@
+-- MATHEMATIC FUNCTIONS – 20 Questions
+
+-- Find sine value of an angle.
+   select  SIN(30 * ACOS(-1) / 180) AS sine_value from dual;
+
+-- Find cosine value of an angle.
+   select COS(60 * (ACOS(-1)/180)) AS cosine_value from dual;
+
+-- Find tangent value.
+   select TAN(45 * (ACOS(-1)/180)) AS tangent_value from dual;
+
+-- Convert degrees to radians.
+   select 90 * (ACOS(-1) / 180) AS radians_value from dual;
+
+-- convert radians to degree.
+   select 1 * (180 / ACOS(-1)) AS degrees_value from dual;
+
+-- Find logarithm (base 10) of a number.
+   select LOG(10, 1000) AS log_base10_value from dual;
+
+-- Find natural log of a number.
+   select LN(10) AS natural_log_value from dual;
+
+-- Find square of a number.
+   select POWER(5, 2) AS square_value from dual;
+    
+-- Find cube of a number.
+   select POWER(number, 3) AS cube from dual;
+  
+-- Find greatest value among three numbers.
+   select GREATEST(10, 25, 17) AS max_value from dual;
+
+-- Find least value among three numbers.
+   select LEAST(10, 25, 17) AS min_value from dual;
+
+-- Calculate variance of sales.
+   select VAR_SAMP(sales) AS sample_variance from sales_data;
+  
+-- Calculate standard deviation of sales.
+    select STDDEV(sales) AS sample_stddev from sales_data;
+
+-- Find average deviation.
+    select AVG(ABS(sales - avg_sales)) AS avg_deviation 
+    from (
+    select sales, (select AVG(sales) FROM sales_data) AS avg_sales
+    from sales_data );
+
+-- Calculate geometric mean.
+    select EXP(AVG(LN(sales))) AS geometric_mean from sales_data;
+
+-- Calculate harmonic mean.
+   select COUNT(sales) / SUM(1 / sales) AS harmonic_mean from sales_data;
+
+-- Find sum of squares.
+   select SUM(POWER(sales, 2)) AS sum_of_squares from sales_data;
+   
+-- Calculate correlation between two columns.
+   select CORR(sales, profit) AS correlation_coefficient from sales_data;
+
+-- Calculate regression slope.
+   select REGR_SLOPE(profit, sales) AS slope from sales_data;
+   
